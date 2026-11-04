@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Monitor Lite</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>World Monitor <span class="lite">lite</span></h1>
+  <div class="controls">
+    <label>Region
+      <select id="region">
+        <option value="">All</option>
+        <option value="United States">United States</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="China">China</option>
+        <option value="Russia">Russia</option>
+        <option value="India">India</option>
+        <option value="Germany">Germany</option>
+        <option value="France">France</option>
+        <option value="Japan">Japan</option>
+        <option value="Brazil">Brazil</option>
+      </select>
+    </label>
+    <button id="refresh" title="Re-fetch live sources">Refresh</button>
+    <span id="asof" class="asof"></span>
+  </div>
+</header>
+
+<main id="grid">
+  <section class="panel" id="panel-politics"><h2>Formal Politics</h2><ul></ul></section>
+  <section class="panel" id="panel-opinion"><h2>Opinion &amp; Discourse</h2><ul></ul></section>
+  <section class="panel" id="panel-security"><h2>Security &amp; Intel</h2><ul></ul></section>
+  <section class="panel" id="panel-conflict"><h2>Conflicts</h2><ul></ul></section>
+  <section class="panel" id="panel-economics"><h2>Economics</h2><ul></ul></section>
+  <section class="panel" id="panel-climate"><h2>Climate &amp; Hazards</h2><ul></ul></section>
+  <section class="panel wide" id="panel-social"><h2>Social Pulse</h2><ul></ul></section>
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
