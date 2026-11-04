@@ -1,5 +1,295 @@
 {
-  "generated": "1970-01-01T00:00:00.000Z",
-  "politics": [], "opinion": [], "security": [],
-  "conflict": [], "economics": [], "climate": [], "social": []
+  "generated": "2026-11-04T02:40:47.356Z",
+  "social": [],
+  "politics": [],
+  "opinion": [],
+  "security": [
+    {
+      "title": "O risco de golpe se partido de Trump perder eleio , segundo Reginaldo Nasser",
+      "url": "https://www.cartacapital.com.br/cartaexpressa/apesar-de-ameacas-de-trump-risco-de-nova-tentativa-de-golpe-nos-eua-e-remota-avalia-reginaldo-nasser/",
+      "domain": "cartacapital.com.br",
+      "seendate": "20261104T013000Z",
+      "sourcecountry": "Brazil"
+    },
+    {
+      "title": "1953 darbesinden 1979  daki elçilik baskınına ve bölgesel savaşa uzanan İran - ABD gerilimi",
+      "url": "https://www.aa.com.tr/tr/dunya/1953-darbesinden-1979daki-elcilik-baskinina-ve-bolgesel-savasa-uzanan-iran-abd-gerilimi/4109581",
+      "domain": "aa.com.tr",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "title": "Cyberattacchi , dalla Farnesina ai supermercati . La minaccia che sfugge alle statistiche",
+      "url": "https://formiche.net/2026/11/cyberattacchi-dalla-farnesina-ai-supermercati-la-minaccia-che-sfugge-alle-statistiche/",
+      "domain": "formiche.net",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Italy"
+    },
+    {
+      "title": "Homem morre após golpe de mata - leão em Feira de Santana",
+      "url": "https://www.bahianoticias.com.br/municipios/noticia/53197-homem-morre-apos-ser-imobilizado-com-golpe-de-mata-leao-durante-briga-em-feira-de-santana",
+      "domain": "bahianoticias.com.br",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Brazil"
+    },
+    {
+      "title": "Spain Is A Socialist Dictatorship",
+      "url": "https://www.americanthinker.com/articles/2026/11/spain-is-a-socialist-dictatorship/",
+      "domain": "americanthinker.com",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "United States"
+    },
+    {
+      "title": "Việt Nam và Trung Quốc phối hợp huấn luyện , diễn tập chung phòng , chống khủng bố",
+      "url": "https://baomoi.com/viet-nam-va-trung-quoc-phoi-hop-huan-luyen-dien-tap-chung-phong-chong-khung-bo-c56424421.epi",
+      "domain": "baomoi.com",
+      "seendate": "20261104T013000Z",
+      "sourcecountry": "Vietnam"
+    },
+    {
+      "title": "European supermarkets rush to patch vulnerabilities after region - wide fridge hack",
+      "url": "https://www.asiaone.com/world/european-supermarkets-rush-patch-vulnerabilities-after-region-wide-fridge-hack",
+      "domain": "asiaone.com",
+      "seendate": "20261104T013000Z",
+      "sourcecountry": "Singapore"
+    },
+    {
+      "title": "هجمات إلكترونية تضرب متاجر في 7 دول أوروبية",
+      "url": "https://safa.ps/post/422589/%D9%87%D8%AC%D9%85%D8%A7%D8%AA-%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9-%D8%AA%D8%B6%D8%B1%D8%A8-%D9%85%D8%AA%D8%A7%D8%AC%D8%B1-%D9%81%D9%8A-7-%D8%AF%D9%88%D9%84-%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D9%8A%D8%A9",
+      "domain": "safa.ps",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Israel"
+    },
+    {
+      "title": "Evropol otkrio 9 . 000 linkova ka ekstremističkom sadržaju : Propaganda se širila i preko onlajn igara",
+      "url": "https://www.novosti.rs/planeta/svet/1667361/evropol-otkrio-9-000-linkova-ekstremistickom-sadrzaju-propaganda-sirila-preko-onlajn-igara",
+      "domain": "novosti.rs",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Serbia"
+    },
+    {
+      "title": "Laura Morante : « Terrorizzata ogni sera , ma in teatro tutto è vivo » ",
+      "url": "https://www.laprovinciacr.it/news/cultura-e-spettacoli/595211/laura-morante-terrorizzata-ogni-sera-ma-in-teatro-tutto-e-vivo.html",
+      "domain": "laprovinciacr.it",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Italy"
+    },
+    {
+      "title": "China foreign minister meets Southeast Asian officials amid relations push",
+      "url": "https://www.asiaone.com/asia/china-foreign-minister-meets-southeast-asian-officials-amid-relations-push",
+      "domain": "asiaone.com",
+      "seendate": "20261104T013000Z",
+      "sourcecountry": "Singapore"
+    },
+    {
+      "title": "Cinéma : dans le savoureux  Wild Horse Nine , John Malkovich incarne un agent de la CIA provocateur et dément",
+      "url": "https://www.lanouvellerepublique.fr/a-la-une/cinema-dans-le-savoureux-wild-horse-nine-john-malkovich-incarne-un-agent-de-la-cia-provocateur-et-dement-1793354222",
+      "domain": "lanouvellerepublique.fr",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "France"
+    },
+    {
+      "title": "Jovem de 20 anos detido pela PJ na Guarda por tentativa de homicídio do pai em área de descanso da A23",
+      "url": "https://sapo.pt/artigo/jovem-de-20-anos-detido-pela-pj-na-guarda-por-tentativa-de-homicidio-do-pai-em-area-de-descanso-da-a23-6ae9bb128c34e87b497007e3",
+      "domain": "sapo.pt",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Portugal"
+    },
+    {
+      "title": "SUA au pus ochii pe pământurile rare ale unei alte țări",
+      "url": "https://hotnews.ro/sua-au-pus-ochii-pe-pamanturile-rare-ale-unei-alte-tari-2393293",
+      "domain": "hotnews.ro",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Romania"
+    },
+    {
+      "title": "Attacchi hacker ai congelatori dei supermercati anche in Italia : si indaga sul sabotaggio",
+      "url": "https://www.ilgazzettino.it/italia/primopiano/attacchi_hacker_congelatori_supermercati_italia_europa-9866096.html",
+      "domain": "ilgazzettino.it",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Italy"
+    },
+    {
+      "title": "CRPF के इतिहास में 47 साल बाद नया कीर्तिमान , पहली बार लगातार 12 महीने तक ऑपरेशन में एक भी जवान शहीद नहीं",
+      "url": "https://hindi.moneycontrol.com/india/new-milestone-in-history-of-crpf-after-47-years-first-time-not-soldier-martyred-in-operations-for-12-consecutive-months-article-2453488.html",
+      "domain": "hindi.moneycontrol.com",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "India"
+    },
+    {
+      "title": "Rusyada Google ve Telegrama para cezası",
+      "url": "https://www.aa.com.tr/tr/dunya/rusyada-google-ve-telegrama-para-cezasi/4109761",
+      "domain": "aa.com.tr",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "title": "Şehit ailelerinden örnek dayanışma : Şehit Emrah Ersoyun hayali için el ele verdiler",
+      "url": "https://www.haber7.com/guncel/haber/3673761-sehit-ailelerinden-ornek-dayanisma-sehit-emrah-ersoyun-hayali-icin-el-ele-verdiler",
+      "domain": "haber7.com",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "title": "Supermercati sotto attacco hacker , frigoriferi fino a 55 gradi : così viene sabotata la catena del freddo . I casi in Italia",
+      "url": "https://www.ilgazzettino.it/italia/primopiano/attacco_hacker_supermercati_frigoriferi_55_gradi_italia_europa-9866098.html",
+      "domain": "ilgazzettino.it",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Italy"
+    },
+    {
+      "title": "ESET Research uncovers Gorbag , Russia - aligned threat group harvesting intelligence from Ukraine",
+      "url": "https://www.manilatimes.net/2026/11/03/tmt-newswire/globenewswire/eset-research-uncovers-gorbag-russia-aligned-threat-group-harvesting-intelligence-from-ukraine/2460378",
+      "domain": "manilatimes.net",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Philippines"
+    },
+    {
+      "title": "Châu Âu lo đứt gãy chuỗi cung ứng thực phẩm vì tấn công mạng",
+      "url": "https://baomoi.com/chau-au-lo-dut-gay-chuoi-cung-ung-thuc-pham-vi-tan-cong-mang-c56424325.epi",
+      "domain": "baomoi.com",
+      "seendate": "20261104T013000Z",
+      "sourcecountry": "Vietnam"
+    },
+    {
+      "title": "Espetáculo Agente 031 leva comédia e mistério ao Teatro Francisco Nunes",
+      "url": "https://soubh.uai.com.br/noticias/cultura/espetaculo-agente-031-leva-comedia-e-misterio-ao-teatro-francisco-nunes/",
+      "domain": "soubh.uai.com.br",
+      "seendate": "20261104T013000Z",
+      "sourcecountry": "Brazil"
+    },
+    {
+      "title": "Varnar för kinesisk vindkraft – används som vapen",
+      "url": "https://www.affarsvarlden.se/artikel/varnar-for-kinesisk-vindkraft-anvands-som-vapen",
+      "domain": "affarsvarlden.se",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Sweden"
+    },
+    {
+      "title": "El espionaje nazi en Gibraltar , las fotos de la antigua Algeciras y las ferias de Tarifa : tres días para descubrir la historia que esconde la comarca",
+      "url": "https://www.europasur.es/vivir-el-sur/xviii-jornadas-historia-campo-gibraltar-programa-2026_0_2008383140.html",
+      "domain": "europasur.es",
+      "seendate": "20261103T111500Z",
+      "sourcecountry": "Spain"
+    },
+    {
+      "title": "Police arrest second Top End teenager in ongoing investigation into alleged terrorism offences",
+      "url": "https://www.abc.net.au/news/2026-11-04/afp-arrest-second-nt-teenager-terrorism-offences/107344606",
+      "domain": "abc.net.au",
+      "seendate": "20261104T013000Z",
+      "sourcecountry": "Australia"
+    }
+  ],
+  "conflict": [],
+  "economics": [],
+  "climate": [
+    {
+      "title": "Tropical Cyclone Murasu",
+      "url": "https://www.metoc.navy.mil/jtwc/products/io0426.tcw",
+      "seendate": "2026-11-01T00:00:00Z",
+      "category": "Severe Storms"
+    },
+    {
+      "title": "Prescribed Fire Dry Lake Hills Piles RX, Coconino, Arizona",
+      "url": "https://irwin.doi.gov/observer/incidents/2026-AZCOF-001612",
+      "seendate": "2026-10-30T10:13:00Z",
+      "category": "Wildfires"
+    },
+    {
+      "title": "Iceberg C39",
+      "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+      "seendate": "2022-04-29T00:00:00Z",
+      "category": "Sea and Lake Ice"
+    },
+    {
+      "title": "Iceberg A81",
+      "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+      "seendate": "2023-01-27T00:00:00Z",
+      "category": "Sea and Lake Ice"
+    },
+    {
+      "title": "Iceberg D33B",
+      "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+      "seendate": "2023-09-08T00:00:00Z",
+      "category": "Sea and Lake Ice"
+    },
+    {
+      "title": "Iceberg A83",
+      "url": "https://earthobservatory.nasa.gov/images/152848/antarctic-ice-shelf-spawns-iceberg-a-83",
+      "seendate": "2024-05-24T00:00:00Z",
+      "category": "Sea and Lake Ice"
+    },
+    {
+      "title": "Iceberg A84",
+      "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+      "seendate": "2025-01-31T00:00:00Z",
+      "category": "Sea and Lake Ice"
+    },
+    {
+      "title": "Iceberg A85",
+      "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+      "seendate": "2025-02-21T00:00:00Z",
+      "category": "Sea and Lake Ice"
+    },
+    {
+      "title": "Iceberg B22K",
+      "url": "https://usicecenter.gov/pub/Iceberg_Tabular.csv",
+      "seendate": "2026-10-30T00:00:00Z",
+      "category": "Sea and Lake Ice"
+    },
+    {
+      "title": "Prescribed Fire McCarty Piles RX, Coconino, Arizona",
+      "url": "https://irwin.doi.gov/observer/incidents/2026-AZCOF-001609",
+      "seendate": "2026-10-29T12:16:00Z",
+      "category": "Wildfires"
+    },
+    {
+      "title": "Prescribed Fire Freidland-Chimney Piles RX, Coconino, Arizona",
+      "url": "https://irwin.doi.gov/observer/incidents/2026-AZCOF-001608",
+      "seendate": "2026-10-29T11:37:00Z",
+      "category": "Wildfires"
+    },
+    {
+      "title": "Wildfire South Tank Trail, Perry, Mississippi",
+      "url": "https://irwin.doi.gov/observer/incidents/2026-MSMNF-000680",
+      "seendate": "2026-10-28T18:02:00Z",
+      "category": "Wildfires"
+    },
+    {
+      "title": "Prescribed Fire Walker Hill 3 Piles RX, Coconino, Arizona",
+      "url": "https://irwin.doi.gov/observer/incidents/2026-AZCOF-001563",
+      "seendate": "2026-10-28T11:22:00Z",
+      "category": "Wildfires"
+    },
+    {
+      "title": "Prescribed Fire Brie Slash Piles RX, Coconino, Arizona",
+      "url": "https://irwin.doi.gov/observer/incidents/2026-AZCOF-001597",
+      "seendate": "2026-10-28T11:21:00Z",
+      "category": "Wildfires"
+    },
+    {
+      "title": "Prescribed Fire Newman 3 Piles RX, Coconino, Arizona",
+      "url": "https://irwin.doi.gov/observer/incidents/2026-AZCOF-001600",
+      "seendate": "2026-10-28T10:09:00Z",
+      "category": "Wildfires"
+    },
+    {
+      "title": "Hurricane Vance",
+      "url": "https://www.metoc.navy.mil/jtwc/products/ep2226.tcw",
+      "seendate": "2026-10-21T18:00:00Z",
+      "category": "Severe Storms"
+    },
+    {
+      "title": "Super Typhoon In-fa",
+      "url": "https://www.metoc.navy.mil/jtwc/products/wp3026.tcw",
+      "seendate": "2026-10-23T18:00:00Z",
+      "category": "Severe Storms"
+    },
+    {
+      "title": "M6.4 — southeast of Easter Island",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000ttxz",
+      "seendate": "2026-10-29T07:49:50.928Z",
+      "category": "Earthquake"
+    }
+  ]
 }
