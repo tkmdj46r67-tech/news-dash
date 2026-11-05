@@ -1,20 +1,27 @@
-// app.js
-import { TRENDING_URL, STORIES_PER_COUNTRY, COUNTRIES, REGIONS } from "./sources.js";
+import { TRENDING_URL, STORIES_PER_COUNTRY, REGIONS, COUNTRY_NAMES } from "./sources.js";
 
-// A 24x12 ASCII map where each number maps to a region in REGIONS
+// A 48x20 ASCII map mapping to the 8 REGIONS
 const MAP_LAYOUT = [
-  "000000000000000000000000",
-  "001111110000007777770000",
-  "011111111000007777777000",
-  "011111111033333377777770",
-  "002222220033333355666600",
-  "002222220044444444400000",
-  "000222200044444444400000",
-  "000022200000444444000000",
-  "000000000000000000000000",
-  "000000000000000000888000",
-  "000000000000000008888880",
-  "000000000000000000888000",
+  "000000000000000000000000000000000000000000000000",
+  "000001111111111100000000000000000000777777777777",
+  "000001111111111100000000000000000000777777777777",
+  "000001111111111100000333333333000000777777777777",
+  "000001111111111100000333333333000000777777777777",
+  "000001111111111100000333333333000000777777777777",
+  "000001111111111100000333333333000000777777777777",
+  "000000000222220000000044444440000000006666600000",
+  "000000000222220000000044444440055555006666600000",
+  "000000000222220000000044444440055555006666600000",
+  "000000000222220000000044444440055555006666600000",
+  "000000000222220000000044444440055555006666600000",
+  "000000000222220000000044444440000000006666600000",
+  "000000000222220000000000000000000000006666600000",
+  "000000000000000000000000000000000000000000000000",
+  "000000000000000000000000000000000000008888888000",
+  "000000000000000000000000000000000000008888888000",
+  "000000000000000000000000000000000000008888888000",
+  "000000000000000000000000000000000000000000000000",
+  "000000000000000000000000000000000000000000000000"
 ];
 
 async function load() {
@@ -37,9 +44,9 @@ async function load() {
 }
 
 function renderHeatmap(stories) {
-  const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
+  const counts = {};
+  Object.keys(REGIONS).forEach(id => counts[id] = 0);
 
-  // Calculate total stories per region
   stories.forEach((s) => {
     if (!s.countries) return;
     for (const [id, region] of Object.entries(REGIONS)) {
@@ -49,11 +56,10 @@ function renderHeatmap(stories) {
     }
   });
 
-  const max = Math.max(1, ...Object.values(counts)); // Avoid divide by zero
+  const max = Math.max(1, ...Object.values(counts));
   const heatmap = document.getElementById("heatmap");
   let html = "";
 
-  // Draw the grid
   for (const row of MAP_LAYOUT) {
     for (const char of row) {
       const id = parseInt(char, 10);
@@ -61,10 +67,8 @@ function renderHeatmap(stories) {
         html += `<div class="dot empty"></div>`;
       } else {
         const count = counts[id];
-        // Normalize opacity: minimum 0.15 so the region shape remains visible
         const opacity = count === 0 ? 0.15 : 0.3 + (count / max) * 0.7;
         const title = `${REGIONS[id].name}: ${count} stories`;
-        
         html += `<div class="dot" style="opacity: ${opacity.toFixed(2)}" title="${title}"></div>`;
       }
     }
@@ -74,44 +78,63 @@ function renderHeatmap(stories) {
 
 function render(stories) {
   const grid = document.getElementById("grid");
+  let html = "";
 
-  // For each country, find stories whose `countries` array includes its code.
-  const cards = COUNTRIES.map(({ code, name }) => {
-    const matching = stories.filter(
-      (s) => Array.isArray(s.countries) && s.countries.includes(code)
-    );
-    return { code, name, stories: matching.slice(0, STORIES_PER_COUNTRY) };
-  }).filter((c) => c.stories.length > 0);
+  // 1. Loop through Regions
+  for (const [regionId, region] of Object.entries(REGIONS)) {
+    
+    // 2. Find countries in this region that have stories
+    const countriesWithStories = region.codes.map(code => {
+      const countryStories = stories.filter(
+        (s) => Array.isArray(s.countries) && s.countries.includes(code)
+      ).slice(0, STORIES_PER_COUNTRY);
+      
+      return { 
+        code, 
+        name: COUNTRY_NAMES[code] || code.toUpperCase(), 
+        stories: countryStories 
+      };
+    }).filter(c => c.stories.length > 0);
 
-  if (cards.length === 0) {
+    // If no countries in this region have news, skip the whole region
+    if (countriesWithStories.length === 0) continue;
+
+    // 3. Render the Region Wrapper
+    html += `<div class="region-group">`;
+    html += `<h2 class="region-title">${escapeHtml(region.name)}</h2>`;
+    html += `<div class="country-grid">`;
+
+    // 4. Render the Country Cards
+    for (const country of countriesWithStories) {
+      html += `
+        <section class="panel">
+          <h3>${escapeHtml(country.name)}</h3>
+          <ul>
+            ${country.stories.map(s => `
+              <li>
+                <a href="${escapeAttr(s.url)}" target="_blank" rel="noopener">
+                  ${escapeHtml(s.title)}
+                </a>
+                <span class="meta">
+                  ${s.sources_count || 0} outlets · 
+                  score ${typeof s.score === "number" ? s.score.toFixed(1) : "—"}
+                </span>
+              </li>
+            `).join("")}
+          </ul>
+        </section>
+      `;
+    }
+
+    html += `</div></div>`;
+  }
+
+  if (!html) {
     grid.innerHTML = '<p class="empty">No stories returned.</p>';
     return;
   }
 
-  grid.innerHTML = cards
-    .map(
-      (card) => `
-    <section class="panel">
-      <h2>${escapeHtml(card.name)}</h2>
-      <ul>
-        ${card.stories
-          .map(
-            (s) => `
-          <li>
-            <a href="${escapeAttr(s.url)}" target="_blank" rel="noopener">
-              ${escapeHtml(s.title)}
-            </a>
-            <span class="meta">
-              ${s.sources_count || 0} outlets ·
-              score ${typeof s.score === "number" ? s.score.toFixed(1) : "—"}
-            </span>
-          </li>`
-          )
-          .join("")}
-      </ul>
-    </section>`
-    )
-    .join("");
+  grid.innerHTML = html;
 }
 
 function escapeHtml(s) {
@@ -124,5 +147,4 @@ function escapeAttr(s) {
 }
 
 load();
-// Refresh every 30 minutes, matching FreeNews's update cadence
 setInterval(load, 30 * 60 * 1000);
