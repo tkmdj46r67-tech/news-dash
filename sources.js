@@ -19,3 +19,14 @@ export const COUNTRIES = [
   { code: "br", name: "Brazil" },
   { code: "au", name: "Australia" },
 ];
+// sources.js
+export const REGIONS = {
+  1: { name: "North America", codes: ["us", "ca", "mx"] },
+  2: { name: "South America", codes: ["br", "ar", "cl", "co", "pe", "ve"] },
+  3: { name: "Europe", codes: ["gb", "de", "fr", "it", "es", "nl", "se", "pl", "ua", "ru"] },
+  4: { name: "Africa", codes: ["za", "ng", "eg", "ke", "et", "ma", "gh"] },
+  5: { name: "Middle East", codes: ["il", "ir", "sa", "ae", "tr", "qa", "kw", "om"] },
+  6: { name: "South Asia", codes: ["in", "pk", "bd", "lk", "np"] },
+  7: { name: "East Asia", codes: ["cn", "jp", "kr", "tw", "vn", "th", "id", "my", "ph"] },
+  8: { name: "Oceania", codes: ["au", "nz"] },
+};
