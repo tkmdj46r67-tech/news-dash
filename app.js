@@ -1,49 +1,69 @@
-import { TRENDING_URL, STORIES_PER_COUNTRY, REGIONS, COUNTRY_NAMES } from "./sources.js";
+// API Endpoint
+const TRENDING_URL = "https://ethos6.github.io/free-news-api/v1/trending.json";
+const STORIES_PER_COUNTRY = 5;
 
-// A 48x20 ASCII map mapping to the 8 REGIONS
-const MAP_LAYOUT = [
-  "000000000000000000000000000000000000000000000000",
-  "000001111111111100000000000000000000777777777777",
-  "000001111111111100000000000000000000777777777777",
-  "000001111111111100000333333333000000777777777777",
-  "000001111111111100000333333333000000777777777777",
-  "000001111111111100000333333333000000777777777777",
-  "000001111111111100000333333333000000777777777777",
-  "000000000222220000000044444440000000006666600000",
-  "000000000222220000000044444440055555006666600000",
-  "000000000222220000000044444440055555006666600000",
-  "000000000222220000000044444440055555006666600000",
-  "000000000222220000000044444440055555006666600000",
-  "000000000222220000000044444440000000006666600000",
-  "000000000222220000000000000000000000006666600000",
-  "000000000000000000000000000000000000000000000000",
-  "000000000000000000000000000000000000008888888000",
-  "000000000000000000000000000000000000008888888000",
-  "000000000000000000000000000000000000008888888000",
-  "000000000000000000000000000000000000000000000000",
-  "000000000000000000000000000000000000000000000000"
-];
+// Regional Groupings and Country Names
+const REGIONS = {
+  1: { name: "North America", codes: ["us", "ca", "mx"] },
+  2: { name: "South America", codes: ["br", "ar", "cl", "co", "pe", "ve"] },
+  3: { name: "Europe", codes: ["gb", "de", "fr", "it", "es", "nl", "se", "pl", "ua", "ru"] },
+  4: { name: "Africa", codes: ["za", "ng", "eg", "ke", "et", "ma", "gh"] },
+  5: { name: "Middle East", codes: ["il", "ir", "sa", "ae", "tr", "qa", "kw", "om"] },
+  6: { name: "South Asia", codes: ["in", "pk", "bd", "lk", "np"] },
+  7: { name: "East Asia", codes: ["cn", "jp", "kr", "tw", "vn", "th", "id", "my", "ph"] },
+  8: { name: "Oceania", codes: ["au", "nz"] },
+};
+
+const COUNTRY_NAMES = {
+  us: "United States", gb: "United Kingdom", cn: "China", ru: "Russia",
+  in: "India", de: "Germany", fr: "France", jp: "Japan", br: "Brazil",
+  au: "Australia", ca: "Canada", mx: "Mexico", ar: "Argentina", cl: "Chile",
+  co: "Colombia", pe: "Peru", ve: "Venezuela", it: "Italy", es: "Spain",
+  nl: "Netherlands", se: "Sweden", pl: "Poland", ua: "Ukraine", za: "South Africa",
+  ng: "Nigeria", eg: "Egypt", ke: "Kenya", et: "Ethiopia", ma: "Morocco",
+  gh: "Ghana", il: "Israel", ir: "Iran", sa: "Saudi Arabia", ae: "UAE",
+  tr: "Turkey", qa: "Qatar", kw: "Kuwait", om: "Oman", pk: "Pakistan",
+  bd: "Bangladesh", lk: "Sri Lanka", np: "Nepal", kr: "South Korea",
+  tw: "Taiwan", vn: "Vietnam", th: "Thailand", id: "Indonesia", my: "Malaysia",
+  ph: "Philippines", nz: "New Zealand"
+};
+
+// Mapping Numeric ISO IDs (from TopoJSON) to Alpha-2 Codes
+const isoNumericToAlpha2 = {
+  "840": "us", "124": "ca", "484": "mx", 
+  "76": "br", "32": "ar", "152": "cl", "170": "co", "604": "pe", "862": "ve",
+  "826": "gb", "276": "de", "250": "fr", "380": "it", "724": "es", "528": "nl", "752": "se", "616": "pl", "804": "ua", "643": "ru",
+  "710": "za", "566": "ng", "818": "eg", "404": "ke", "231": "et", "504": "ma", "288": "gh",
+  "376": "il", "364": "ir", "682": "sa", "784": "ae", "792": "tr", "634": "qa", "414": "kw", "512": "om",
+  "356": "in", "586": "pk", "50": "bd", "144": "lk", "524": "np",
+  "156": "cn", "392": "jp", "410": "kr", "158": "tw", "704": "vn", "764": "th", "360": "id", "458": "my", "608": "ph",
+  "36": "au", "554": "nz"
+};
 
 async function load() {
   const grid = document.getElementById("grid");
-  const heatmap = document.getElementById("heatmap");
+  document.getElementById("map-container").innerHTML = "";
   grid.innerHTML = '<p class="loading">Loading world stories…</p>';
-  heatmap.innerHTML = "";
 
   try {
+    // 1. Fetch News Data
     const res = await fetch(TRENDING_URL, { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     const stories = data.stories || [];
     
-    renderHeatmap(stories);
-    render(stories);
+    // 2. Render Map
+    await renderMap(stories);
+    
+    // 3. Render Lists
+    renderLists(stories);
   } catch (e) {
     grid.innerHTML = `<p class="empty">Could not load stories: ${e.message}</p>`;
   }
 }
 
-function renderHeatmap(stories) {
+async function renderMap(stories) {
+  // Calculate story counts per region
   const counts = {};
   Object.keys(REGIONS).forEach(id => counts[id] = 0);
 
@@ -57,33 +77,69 @@ function renderHeatmap(stories) {
   });
 
   const max = Math.max(1, ...Object.values(counts));
-  const heatmap = document.getElementById("heatmap");
-  let html = "";
 
-  for (const row of MAP_LAYOUT) {
-    for (const char of row) {
-      const id = parseInt(char, 10);
-      if (id === 0) {
-        html += `<div class="dot empty"></div>`;
-      } else {
-        const count = counts[id];
-        const opacity = count === 0 ? 0.15 : 0.3 + (count / max) * 0.7;
-        const title = `${REGIONS[id].name}: ${count} stories`;
-        html += `<div class="dot" style="opacity: ${opacity.toFixed(2)}" title="${title}"></div>`;
+  // Fetch TopoJSON world map
+  const topoData = await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+    .then(res => res.json());
+  
+  const geoData = topojson.feature(topoData, topoData.objects.countries);
+
+  // Set up D3 Map
+  const width = 960;
+  const height = 500;
+  const projection = d3.geoNaturalEarth1().fitSize([width, height], geoData);
+  const path = d3.geoPath().projection(projection);
+
+  const svg = d3.select("#map-container")
+    .append("svg")
+    .attr("viewBox", `0 0 ${width} ${height}`);
+
+  // Draw Countries
+  svg.append("g")
+    .selectAll("path")
+    .data(geoData.features)
+    .join("path")
+    .attr("d", path)
+    .attr("fill", d => {
+      const alpha2 = isoNumericToAlpha2[String(d.id)];
+      if (!alpha2) return "#161b22"; // Unmapped countries get dark gray
+
+      // Find which region this country belongs to
+      let regionId = null;
+      for (const [id, region] of Object.entries(REGIONS)) {
+        if (region.codes.includes(alpha2)) {
+          regionId = id;
+          break;
+        }
       }
-    }
-  }
-  heatmap.innerHTML = html;
+      if (!regionId) return "#161b22";
+
+      const count = counts[regionId] || 0;
+      const opacity = count === 0 ? 0.15 : 0.3 + (count / max) * 0.7;
+      return `rgba(255, 123, 0, ${opacity})`;
+    })
+    .append("title")
+    .text(d => {
+      const alpha2 = isoNumericToAlpha2[String(d.id)];
+      const name = (alpha2 && COUNTRY_NAMES[alpha2]) ? COUNTRY_NAMES[alpha2] : d.properties.name;
+      
+      if (!alpha2) return name;
+      
+      let regionId = null;
+      for (const [id, region] of Object.entries(REGIONS)) {
+        if (region.codes.includes(alpha2)) { regionId = id; break; }
+      }
+      
+      return regionId ? `${REGIONS[regionId].name}: ${counts[regionId]} stories` : name;
+    });
 }
 
-function render(stories) {
+function renderLists(stories) {
   const grid = document.getElementById("grid");
   let html = "";
 
-  // 1. Loop through Regions
   for (const [regionId, region] of Object.entries(REGIONS)) {
-    
-    // 2. Find countries in this region that have stories
+    // Find countries in this region that have stories
     const countriesWithStories = region.codes.map(code => {
       const countryStories = stories.filter(
         (s) => Array.isArray(s.countries) && s.countries.includes(code)
@@ -96,15 +152,13 @@ function render(stories) {
       };
     }).filter(c => c.stories.length > 0);
 
-    // If no countries in this region have news, skip the whole region
+    // Skip empty regions entirely
     if (countriesWithStories.length === 0) continue;
 
-    // 3. Render the Region Wrapper
     html += `<div class="region-group">`;
     html += `<h2 class="region-title">${escapeHtml(region.name)}</h2>`;
     html += `<div class="country-grid">`;
 
-    // 4. Render the Country Cards
     for (const country of countriesWithStories) {
       html += `
         <section class="panel">
@@ -142,9 +196,12 @@ function escapeHtml(s) {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
   );
 }
+
 function escapeAttr(s) {
   return String(s).replace(/"/g, "&quot;");
 }
 
+// Initialize
 load();
+// Refresh every 30 minutes
 setInterval(load, 30 * 60 * 1000);
