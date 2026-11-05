@@ -30,3 +30,17 @@ export const REGIONS = {
   7: { name: "East Asia", codes: ["cn", "jp", "kr", "tw", "vn", "th", "id", "my", "ph"] },
   8: { name: "Oceania", codes: ["au", "nz"] },
 };
+// sources.js
+export const COUNTRY_NAMES = {
+  us: "United States", gb: "United Kingdom", cn: "China", ru: "Russia",
+  in: "India", de: "Germany", fr: "France", jp: "Japan", br: "Brazil",
+  au: "Australia", ca: "Canada", mx: "Mexico", ar: "Argentina", cl: "Chile",
+  co: "Colombia", pe: "Peru", ve: "Venezuela", it: "Italy", es: "Spain",
+  nl: "Netherlands", se: "Sweden", pl: "Poland", ua: "Ukraine", za: "South Africa",
+  ng: "Nigeria", eg: "Egypt", ke: "Kenya", et: "Ethiopia", ma: "Morocco",
+  gh: "Ghana", il: "Israel", ir: "Iran", sa: "Saudi Arabia", ae: "UAE",
+  tr: "Turkey", qa: "Qatar", kw: "Kuwait", om: "Oman", pk: "Pakistan",
+  bd: "Bangladesh", lk: "Sri Lanka", np: "Nepal", kr: "South Korea",
+  tw: "Taiwan", vn: "Vietnam", th: "Thailand", id: "Indonesia", my: "Malaysia",
+  ph: "Philippines", nz: "New Zealand"
+};
