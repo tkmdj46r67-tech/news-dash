@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>World Monitor Lite</title>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Load D3 and TopoJSON for the map -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson-client@3"></script>
 </head>
 <body>
   <header>
@@ -13,9 +17,10 @@
   </header>
 
   <main>
-    <!-- Heatmap Section -->
+    <!-- Map Section -->
     <section id="map-section">
-      <div id="heatmap" aria-label="Global story heatmap"></div>
+      <!-- The SVG map will be injected here -->
+      <div id="map-container" aria-label="Global story heatmap"></div>
       
       <div class="legend">
         <span>Fewer Stories</span>
